@@ -21,5 +21,5 @@ class BackTesterContext:
 
     def __reset_order(self):
         self.order = pd.DataFrame(
-            columns=['contract', 'delivery_month', 'buy_position', 'sold_position']
+            columns=['contract', 'delivery_month', 'buy_position', 'sell_position']
         )

@@ -13,10 +13,10 @@ class BuyAndHold:
     def make_decision(self, price_information: pd.DataFrame):
 
         if self.__asset_maintainer.current_position_status_maintainer.current_position_status.empty is True and \
-                price_information.loc[price_information['contract'] == 'TX'].empty is False:
+                price_information.loc[price_information['contract'] == self.target_contract].empty is False:
 
             recent_month_of_target_contract = pd.to_datetime(
-                price_information.loc[price_information['contract'] == 'TX']['delivery_month'],
+                price_information.loc[price_information['contract'] == self.target_contract]['delivery_month'],
                 format='%Y%m'
             ).min()
 
@@ -27,7 +27,7 @@ class BuyAndHold:
                             'contract': self.target_contract,
                             'delivery_month': str(datetime.strftime(recent_month_of_target_contract, '%Y%m')),
                             'buy_position': 1,
-                            'sold_position': 0
+                            'sell_position': 0
                         }
                     ]
                 )

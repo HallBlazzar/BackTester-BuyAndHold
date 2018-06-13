@@ -33,7 +33,6 @@ if __name__ == '__main__':
     for price_information, trading_status in back_test_context.move_to_next_day():
         print('----------{}----------'.format(price_information.iloc[0, :]['date']))
         asset_maintainer.update_asset(price_information, trading_status)
-        # print(asset_maintainer.current_position_status_maintainer.current_position_status)
         buy_and_hold.make_decision(price_information)
 
     asset_maintainer.position_status_recorder.position_status_record.to_msgpack(
